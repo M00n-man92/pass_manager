@@ -1,5 +1,6 @@
 from tkinter import messagebox
 from tkinter import *
+from encrpt_ps import Encript
 window=Tk()
 window.title("Password Manager")
 window.config(padx=50,pady=50)
@@ -25,6 +26,7 @@ def piano():
             input_three.delete(0,END)            
             
 
+
     else:    
         check=messagebox.askokcancel(title=websiite,message=f"do you wanna save {passing} as a password for {websiite} ")
         if check:
@@ -34,6 +36,12 @@ def piano():
             
             input_three.delete(0,END)
             input_one.focus()
+
+def turn_it_up_a_noch():
+    gen_password=Encript.start()
+    input_three.insert(0,gen_password)
+
+
 image=PhotoImage(file='./pass_manager/logo.png')
 canvas=Canvas(width=200,height=200)
 canvas.create_image(102,100,image=image)
@@ -55,7 +63,7 @@ input_two.insert(0,"azraelnumb00@gmail.com")
 print(input_one.get())
 input_three=Entry(width=33)
 input_three.grid(column=1,row=3)
-butt_two=Button(width=9,text="Generate",highlightthickness=0)
+butt_two=Button(width=9,text="Generate",highlightthickness=0,command=turn_it_up_a_noch)
 butt_two.grid(column=2,row=3)
 
 window.mainloop()
