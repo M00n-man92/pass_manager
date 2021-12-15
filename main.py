@@ -1,6 +1,8 @@
 from tkinter import messagebox
 from tkinter import *
 from encrpt_ps import Encript
+import pyperclip
+
 window=Tk()
 window.title("Password Manager")
 window.config(padx=50,pady=50)
@@ -38,9 +40,10 @@ def piano():
             input_one.focus()
 
 def turn_it_up_a_noch():
+    input_three.delete(0,END)
     gen_password=Encript.start()
     input_three.insert(0,gen_password)
-
+    pyperclip.copy(gen_password)
 
 image=PhotoImage(file='./pass_manager/logo.png')
 canvas=Canvas(width=200,height=200)
